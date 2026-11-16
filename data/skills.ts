@@ -8,7 +8,6 @@ export const skills = [
   "Android Jetpack",
   "LiveData",
   "ViewModel",
-  "Room",
   "Navigation",
   "Jetpack Compose",
   "Android Studio",

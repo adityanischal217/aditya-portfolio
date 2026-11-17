@@ -13,8 +13,12 @@ export default function About() {
     <section id="about" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <p className="text-sm uppercase tracking-widest text-zinc-500">About Me</p>
-        <h2 className="mt-3 max-w-4xl text-3xl font-bold tracking-tight text-zinc-100 md:text-5xl">
-          Focused execution, scalable architecture, and polished mobile experiences.
+        <h2 className="mt-3 max-w-4xl text-4xl font-bold tracking-tight text-zinc-100 md:text-6xl">
+          Focused execution,
+          <br />
+          scalable architecture,
+          <br />
+          and polished mobile experiences.
         </h2>
 
         <div className="mt-12 grid gap-10 md:grid-cols-2">
@@ -27,7 +31,7 @@ export default function About() {
           </div>
 
           <div className="space-y-4 text-zinc-400">
-            <h3 className="text-2xl font-semibold text-white">
+            <h3 className="bg-gradient-to-b from-[#8DDB72] to-[#4CAF50] bg-clip-text text-2xl font-semibold text-transparent md:text-3xl">
               I build Android apps that scale to millions of users.
             </h3>
             <p>
@@ -55,7 +59,7 @@ export default function About() {
             <div className="mt-8 grid grid-cols-2 gap-x-8 gap-y-8 rounded-3xl border border-white/10 p-6 md:p-8">
               {stats.map((s) => (
                 <div key={s.label}>
-                  <p className="text-2xl font-bold text-[#d9ff3f] md:text-3xl">
+                  <p className="bg-gradient-to-b from-[#8DDB72] to-[#4CAF50] bg-clip-text text-2xl font-bold text-transparent md:text-3xl">
                     {s.value}
                   </p>
                   <p className="mt-2 text-sm text-zinc-200 md:text-base">

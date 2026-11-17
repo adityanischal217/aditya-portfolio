@@ -71,7 +71,7 @@ export const projects: Project[] = [
      ],
       screenshots: [
       "/aditya_pic.png",
-      "/projects/aditya_pic.png",
+      "/aditya_pic.png",
     ],
     links: [
       {

@@ -89,11 +89,11 @@ export const projects: Project[] = [
       "Glide",
       "Razorpay",
       ],
-   /* links: [
+    links: [
       {
         label: "Google Play Store",
-        url: "https://play.google.com/store/apps/details?id=com.localramu.user",
+        url: "",
       },
-    ],*/
+    ],
   },
 ];

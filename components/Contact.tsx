@@ -2,11 +2,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type {
-  FormEvent,
-  ChangeEvent,
-  PageTransitionEvent,
-} from "react";
+import type { FormEvent, ChangeEvent } from "react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -34,10 +30,8 @@ export default function Contact() {
       scrollToHome();
     };
 
-    const handlePageShow = (event: PageTransitionEvent) => {
-      if (event.persisted) {
-        scrollToHome();
-      }
+    const handlePageShow = () => {
+      scrollToHome();
     };
 
     window.addEventListener("popstate", handlePopState);
@@ -49,7 +43,7 @@ export default function Contact() {
     };
   }, []);
 
-  // Handle form input changes
+  // Handle input changes
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -61,7 +55,7 @@ export default function Contact() {
     }));
   };
 
-  // Submit form through Formspree without redirecting
+  // Submit form using Formspree
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 

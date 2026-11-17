@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { projects } from "@/data/projects";
 
-const filters = ["All", "Personal", "Company"] as const;
+const filters = ["All", "Company"] as const;
 
 export default function Projects() {
   const [active, setActive] = useState<(typeof filters)[number]>("All");

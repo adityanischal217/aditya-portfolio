@@ -81,3 +81,6 @@ export default function About() {
           <TechStackMarquee rows={skillRows} />
         </div>
       </div>
+    </section>
+  );
+}

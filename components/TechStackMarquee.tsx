@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 
-const SPEED = 0.8; // pixels per frame, lower = slower
+const SPEED = 0.7; // pixels per frame, lower = slower
 const RESUME_DELAY = 1500; // ms to wait after manual scroll before auto-scroll resumes
 
 export default function TechStackMarquee({ skills }: { skills: string[] }) {

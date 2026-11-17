@@ -55,12 +55,13 @@ export default function Navbar() {
               Aditya Nischal<span className="text-[var(--accent)]">.</span>
             </p>
 
-            <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--text-muted)]">
-              Android Developer
-            </p>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--text-muted)]">
-              Join Ventures Solutions Pvt Ltd
-            </p>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--text-muted)]">
+  Android Developer
+</p>
+
+<p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--text-muted)]">
+  Join Ventures Solutions Pvt Ltd
+</p>
           </div>
         </a>
 

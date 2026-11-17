@@ -202,15 +202,7 @@ export default function ProjectShowcase() {
           })}
 
         </div>
-
-        {/* Footer */}
-        <div className="mt-16 text-center">
-          <p className="text-sm font-medium text-[var(--text-secondary)]">
-            Crafted with passion. Powered by technology.
-          </p>
-        </div>
-
-      </div>
+  </div>
     </section>
   );
 }

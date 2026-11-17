@@ -97,7 +97,7 @@ export default function About() {
                   </h3>
 
                   <p className="mt-1 text-sm text-zinc-300">
-                    Join Ventures Solution Pvt Ltd, Mumbai, India
+                    Join Ventures Solutions Pvt Ltd, Mumbai, India
                   </p>
                 </div>
               </div>

@@ -7,7 +7,7 @@ export default function About() {
       <div className="mx-auto max-w-6xl">
         <p className="text-sm uppercase tracking-widest text-zinc-500">About Me</p>
         <h2 className="mt-3 max-w-3xl text-lg font-semibold text-zinc-200 md:text-2xl">
-          6.5+ Years Experience | 5M+ Downloads | 4 Published Apps
+          6.5+ Years Experience | 5M+ Downloads 
         </h2>
 
         <div className="mt-12 grid gap-10 md:grid-cols-2">

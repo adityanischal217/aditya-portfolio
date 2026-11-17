@@ -15,7 +15,7 @@ export default function Projects() {
 
   return (
     <section
-      id="projects"
+      id="projectsold"
       className="relative overflow-hidden bg-[var(--background)] px-4 py-16 transition-colors duration-300 sm:px-6 md:py-24"
     >
       <div className="pointer-events-none absolute -top-32 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-[#6CC656]/10 blur-3xl" />

@@ -10,7 +10,7 @@ export default function ProjectShowcase() {
 
   return (
     <section
-      id="app-showcase"
+      id="projects"
       className="relative overflow-hidden bg-[var(--background)] px-4 py-20 sm:px-6 md:py-28"
     >
       {/* Background Effects */}

@@ -28,9 +28,9 @@ export const projects: Project[] = [
       "Payment Integration",
     ],
     screenshots: [
-      "/projects/igp-1.png",
-      "/projects/igp-2.png",
-      "/projects/igp-3.png",
+      "/projects/igp1.jpeg",
+      "/projects/igp2.jpeg",
+      "/projects/igp3.jpeg",
     ],
     links: [
       {
@@ -55,8 +55,9 @@ export const projects: Project[] = [
       "Analytics",
     ],
     screenshots: [
-      "/projects/interflora-1.png",
-      "/projects/interflora-2.png",
+      "/projects/int1.jpeg",
+      "/projects/int2.jpeg",
+      "/projects/int3.jpeg",
     ],
     links: [
       {
@@ -80,8 +81,8 @@ export const projects: Project[] = [
       "Razorpay",
     ],
      screenshots: [
-      "/projects/local3.png",
-      "/projects/local4.png",
+      "/projects/local1.jpeg",
+      "/projects/local4.jpeg",
     ],
     links: [
       {
@@ -104,8 +105,8 @@ export const projects: Project[] = [
       "Razorpay",
     ],
     screenshots: [
-      "/projects/local1.png",
-      "/projects/local2.png",
+      "/projects/local3.jpeg",
+      "/projects/local2.jpeg",
     
     ],
     links: [

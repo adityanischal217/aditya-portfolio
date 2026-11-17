@@ -17,6 +17,17 @@ export default function Contact() {
   const input =
     "w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-4 text-sm text-white placeholder:text-zinc-500 outline-none transition-all duration-300 hover:border-[#8DDB72]/30 hover:bg-white/[0.06] focus:border-[#8DDB72] focus:bg-white/[0.07] focus:ring-2 focus:ring-[#8DDB72]/10";
 
+  // Automatically hide success/error messages after 5 seconds
+  useEffect(() => {
+    if (!status) return;
+
+    const timer = window.setTimeout(() => {
+      setStatus("");
+    }, 5000);
+
+    return () => window.clearTimeout(timer);
+  }, [status]);
+
   // Scroll to Home when returning to the portfolio
   useEffect(() => {
     const scrollToHome = () => {
@@ -115,7 +126,6 @@ export default function Contact() {
       />
 
       <div className="relative mx-auto max-w-6xl">
-
         {/* Heading */}
         <div className="mb-16">
           <p className="bg-gradient-to-r from-[#8DDB72] to-[#4CAF50] bg-clip-text text-sm font-bold uppercase tracking-[0.3em] text-transparent">
@@ -136,10 +146,8 @@ export default function Contact() {
 
         {/* Main Layout */}
         <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
-
           {/* Left Contact Information */}
           <div className="flex flex-col justify-between rounded-3xl border border-white/10 bg-white/[0.025] p-8 transition-all duration-500 hover:border-[#8DDB72]/30 hover:bg-white/[0.04] md:p-10">
-
             <div>
               {/* Availability */}
               <div className="inline-flex items-center gap-2 rounded-full border border-[#8DDB72]/20 bg-[#8DDB72]/[0.08] px-4 py-2">
@@ -166,7 +174,6 @@ export default function Contact() {
 
             {/* Contact Details */}
             <div className="mt-14 space-y-5">
-
               {/* Email */}
               <a
                 href="mailto:adityanischal217@email.com"
@@ -221,13 +228,11 @@ export default function Contact() {
                   ↗
                 </span>
               </a>
-
             </div>
           </div>
 
           {/* Right Contact Form */}
           <div className="rounded-3xl border border-white/10 bg-zinc-900/70 p-8 shadow-2xl shadow-black/20 backdrop-blur-xl transition-all duration-500 hover:border-[#8DDB72]/25 md:p-10">
-
             <div className="mb-8">
               <p className="text-sm font-semibold text-[#8DDB72]">
                 Send a message
@@ -243,7 +248,6 @@ export default function Contact() {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
-
               {/* Name */}
               <div>
                 <label
@@ -260,7 +264,7 @@ export default function Contact() {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="John Doe"
+                  placeholder="Aditya"
                   className={input}
                 />
               </div>
@@ -281,7 +285,7 @@ export default function Contact() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="john@example.com"
+                  placeholder="aditya@example.com"
                   className={input}
                 />
               </div>
@@ -347,7 +351,6 @@ export default function Contact() {
               <p className="text-center text-xs text-zinc-600">
                 Your message will be sent securely through Formspree.
               </p>
-
             </form>
           </div>
         </div>
@@ -363,7 +366,6 @@ export default function Contact() {
             <span className="ml-1 text-[#8DDB72]">♥</span>
           </p>
         </div>
-
       </div>
     </section>
   );

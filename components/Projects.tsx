@@ -12,7 +12,9 @@ export default function Projects() {
   return (
     <section id="projects" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <p className="text-sm uppercase tracking-widest text-zinc-500">Selected Work</p>
+        <p className="bg-gradient-to-b from-[#8DDB72] to-[#4CAF50] bg-clip-text text-base font-extrabold uppercase tracking-widest text-transparent md:text-lg">
+          Selected Work
+        </p>
         <h2 className="mt-3 text-3xl font-bold md:text-5xl">Things I&apos;ve built.</h2>
 
         <div className="mt-8 flex gap-3">
@@ -20,8 +22,10 @@ export default function Projects() {
             <button
               key={f}
               onClick={() => setActive(f)}
-              className={`rounded-full px-5 py-2 text-sm ${
-                active === f ? "bg-white text-black" : "border border-white/15 text-zinc-400"
+              className={`rounded-full px-6 py-3 font-medium transition ${
+                active === f
+                  ? "bg-gradient-to-b from-[#8DDB72] to-[#4CAF50] text-black hover:shadow-[0_0_25px_rgba(108,198,86,0.55)]"
+                  : "border border-white/15 text-zinc-400 hover:border-[#6CC656] hover:text-[#8DDB72]"
               }`}
             >
               {f}

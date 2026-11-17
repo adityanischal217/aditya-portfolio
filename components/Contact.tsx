@@ -23,7 +23,7 @@ export default function Contact() {
 
     const timer = window.setTimeout(() => {
       setStatus("");
-    }, 5000);
+    }, 3000);
 
     return () => window.clearTimeout(timer);
   }, [status]);

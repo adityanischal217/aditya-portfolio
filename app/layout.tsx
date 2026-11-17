@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Your Name | Developer",
-  description: "Short description of what you do.",
+  title: "Aditya Nischal | Developer",
+  description: "Android Developer",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

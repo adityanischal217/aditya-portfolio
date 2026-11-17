@@ -1,7 +1,98 @@
 
+"use client";
+
+import { useEffect, useState } from "react";
+
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const input =
     "w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-4 text-sm text-white placeholder:text-zinc-500 outline-none transition-all duration-300 hover:border-[#8DDB72]/30 hover:bg-white/[0.06] focus:border-[#8DDB72] focus:bg-white/[0.07] focus:ring-2 focus:ring-[#8DDB72]/10";
+
+  // Scroll to Home when returning to the portfolio using browser Back
+  useEffect(() => {
+    const scrollToHome = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "instant",
+      });
+    };
+
+    const handlePopState = () => {
+      scrollToHome();
+    };
+
+    const handlePageShow = (event) => {
+      if (event.persisted) {
+        scrollToHome();
+      }
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    window.addEventListener("pageshow", handlePageShow);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+      window.removeEventListener("pageshow", handlePageShow);
+    };
+  }, []);
+
+  // Handle form input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // Submit form using Formspree without redirecting
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setIsSubmitting(true);
+    setStatus("");
+
+    try {
+      const response = await fetch("https://formspree.io/f/xppddrpg", {
+        method: "POST",
+        body: new FormData(e.target),
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.ok !== false) {
+        // Clear all form fields after successful submission
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+
+        e.target.reset();
+
+        setStatus("success");
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section
@@ -13,6 +104,7 @@ export default function Contact() {
         aria-hidden
         className="pointer-events-none absolute -left-40 top-20 h-96 w-96 rounded-full bg-[#4CAF50]/10 blur-[120px]"
       />
+
       <div
         aria-hidden
         className="pointer-events-none absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-[#8DDB72]/10 blur-[120px]"
@@ -51,6 +143,7 @@ export default function Contact() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#8DDB72] opacity-50" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-[#8DDB72]" />
                 </span>
+
                 <span className="text-xs font-medium text-[#8DDB72]">
                   Open to opportunities
                 </span>
@@ -80,6 +173,7 @@ export default function Contact() {
                     adityanischal217@email.com
                   </p>
                 </div>
+
                 <span className="text-xl text-zinc-500 transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#8DDB72]">
                   ↗
                 </span>
@@ -97,21 +191,25 @@ export default function Contact() {
                     LinkedIn
                   </p>
                 </div>
+
                 <span className="text-xl text-zinc-500 transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#8DDB72]">
                   ↗
                 </span>
               </a>
 
-               <a
-                href="mailto:adityanischal217@email.com"
+              <a
+                href="https://wa.me/917876721147"
+                target="_blank"
+                rel="noreferrer"
                 className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#8DDB72]/40 hover:bg-[#8DDB72]/[0.05]"
               >
                 <div>
-                  <p className="text-xs text-zinc-500">Whatsapp Number</p>
+                  <p className="text-xs text-zinc-500">WhatsApp Number</p>
                   <p className="mt-1 text-sm font-medium text-zinc-200 transition group-hover:text-[#8DDB72]">
                     7876721147
                   </p>
                 </div>
+
                 <span className="text-xl text-zinc-500 transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#8DDB72]">
                   ↗
                 </span>
@@ -127,66 +225,104 @@ export default function Contact() {
               <p className="text-sm font-semibold text-[#8DDB72]">
                 Send a message
               </p>
+
               <h3 className="mt-2 text-2xl font-bold text-white">
                 Let's talk about your idea.
               </h3>
+
               <p className="mt-2 text-sm text-zinc-500">
                 Fill out the form and I'll get back to you.
               </p>
             </div>
 
             <form
-              action="https://formspree.io/f/xppddrpg"
-              method="POST"
+              onSubmit={handleSubmit}
               className="space-y-5"
             >
+              {/* Name */}
               <div>
                 <label className="mb-2 block text-sm font-medium text-zinc-300">
                   Your name
                 </label>
+
                 <input
                   name="name"
+                  type="text"
                   required
+                  value={formData.name}
+                  onChange={handleChange}
                   placeholder="John Doe"
                   className={input}
                 />
               </div>
 
+              {/* Email */}
               <div>
                 <label className="mb-2 block text-sm font-medium text-zinc-300">
                   Email address
                 </label>
+
                 <input
                   name="email"
                   type="email"
                   required
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="john@example.com"
                   className={input}
                 />
               </div>
 
+              {/* Message */}
               <div>
                 <label className="mb-2 block text-sm font-medium text-zinc-300">
                   Your message
                 </label>
+
                 <textarea
                   name="message"
                   required
                   rows={5}
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder="Tell me about your project or opportunity..."
                   className={`${input} resize-none`}
                 />
               </div>
 
+              {/* Success Message */}
+              {status === "success" && (
+                <div
+                  role="status"
+                  className="rounded-xl border border-[#8DDB72]/30 bg-[#8DDB72]/10 p-4 text-sm text-[#8DDB72]"
+                >
+                  <span className="mr-2">✓</span>
+                  Message sent successfully! Thank you for reaching out.
+                </div>
+              )}
+
+              {/* Error Message */}
+              {status === "error" && (
+                <div
+                  role="alert"
+                  className="rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-400"
+                >
+                  Something went wrong. Please try again or contact me directly by email.
+                </div>
+              )}
+
+              {/* Submit Button */}
               <button
                 type="submit"
-                className="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-xl bg-gradient-to-r from-[#8DDB72] to-[#4CAF50] px-6 py-4 font-bold text-black transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_35px_rgba(108,198,86,0.3)] active:scale-[0.98]"
+                disabled={isSubmitting}
+                className="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-xl bg-gradient-to-r from-[#8DDB72] to-[#4CAF50] px-6 py-4 font-bold text-black transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_35px_rgba(108,198,86,0.3)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
               >
                 <span className="relative z-10">
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </span>
+
                 <span className="relative z-10 text-xl transition-transform duration-300 group-hover:translate-x-2">
-                  →
+                  {isSubmitting ? "..." : "→"}
                 </span>
               </button>
 

@@ -14,10 +14,12 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           className="text-xl font-bold text-zinc-300 md:text-2xl"
         >
-      
-          <span className="rounded-md bg-gradient-to-b from-[#8DDB72] to-[#4CAF50] px-3 py-1 text-black shadow-[0_0_20px_rgba(108,198,86,0.45)]">
-              Hello, I'm Aditya Nischal
+       <span className="bg-gradient-to-b from-[#8DDB72] to-[#4CAF50] bg-clip-text text-transparent">
+            Hello, I'm Aditya Nischal
           </span>
+         {/* <span className="rounded-md bg-gradient-to-b from-[#8DDB72] to-[#4CAF50] px-3 py-1 text-black shadow-[0_0_20px_rgba(108,198,86,0.45)]">
+            
+          </span>*/}
         </motion.p>
 
         <motion.h1

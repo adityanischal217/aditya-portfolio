@@ -1,6 +1,7 @@
 export type Project = {
   title: string;
-  category: "Personal" | "Company";
+  /*category: "Personal" | "Company";*/
+  category: "Company";
   description: string;
   tags: string[];
   links: { label: string; url: string }[];
@@ -63,13 +64,11 @@ export const projects: Project[] = [
       "Java",
       "Kotlin",
       "Android SDK",
+      "Analytics",
       "Retrofit",
       "Glide",
       "Razorpay",
-      "PayU",
-      "Paytm",
-      "Appium",
-    ],
+     ],
     links: [
       {
         label: "Google Play Store",
@@ -85,18 +84,16 @@ export const projects: Project[] = [
     tags: [
       "Java",
       "Android SDK",
+      "Analytics",
       "Retrofit",
       "Glide",
       "Razorpay",
-      "PayU",
-      "Paytm",
-      "Appium",
-    ],
-    links: [
+      ],
+   /* links: [
       {
         label: "Google Play Store",
         url: "https://play.google.com/store/apps/details?id=com.localramu.user",
       },
-    ],
+    ],*/
   },
 ];

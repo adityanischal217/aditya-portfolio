@@ -1,5 +1,12 @@
 import { skills } from "@/data/skills";
 
+const stats = [
+  { value: "6.5+", label: "Years of Experience" },
+  { value: "4", label: "Published Apps" },
+  { value: "B.Tech CSE", label: "Education" },
+  { value: "Android + Kotlin", label: "Platforms" },
+];
+
 export default function About() {
   const loop = [...skills, ...skills];
   return (
@@ -7,8 +14,8 @@ export default function About() {
       <div className="mx-auto max-w-6xl">
         <p className="text-sm uppercase tracking-widest text-zinc-500">About Me</p>
         <h2 className="mt-3 max-w-4xl text-3xl font-bold tracking-tight text-zinc-100 md:text-5xl">
-  6.5+ Years Experience | 5M+ Downloads
-</h2>
+          Focused execution, scalable architecture, and polished mobile experiences.
+        </h2>
 
         <div className="mt-12 grid gap-10 md:grid-cols-2">
           <div className="aspect-square rounded-2xl bg-zinc-800">
@@ -18,6 +25,7 @@ export default function About() {
               className="h-full w-full rounded-2xl object-cover"
             />
           </div>
+
           <div className="space-y-4 text-zinc-400">
             <h3 className="text-2xl font-semibold text-white">
               I build Android apps that scale to millions of users.
@@ -37,11 +45,25 @@ export default function About() {
             </p>
             <p>
               Currently working as a Frontend Engineer (Android) at Join Ventures
-              Solutions in Mumbai, I collaborate closely with designers, backend
+              Solutions Pvt Ltd. in Mumbai, I collaborate closely with designers, backend
               engineers and product teams. I'm always looking for opportunities to
               build impactful products and keep growing with modern Android,
               including Jetpack Compose.
             </p>
+
+            {/* Stats card */}
+            <div className="mt-8 grid grid-cols-2 gap-x-8 gap-y-8 rounded-3xl border border-white/10 p-6 md:p-8">
+              {stats.map((s) => (
+                <div key={s.label}>
+                  <p className="text-2xl font-bold text-[#d9ff3f] md:text-3xl">
+                    {s.value}
+                  </p>
+                  <p className="mt-2 text-sm text-zinc-200 md:text-base">
+                    {s.label}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 

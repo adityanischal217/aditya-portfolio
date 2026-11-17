@@ -362,10 +362,6 @@ export default function Contact() {
                   {isSubmitting ? "..." : "→"}
                 </span>
               </button>
-
-              <p className="text-center text-xs text-[var(--text-muted)]">
-                Your message will be sent securely through Formspree.
-              </p>
             </form>
           </div>
         </div>

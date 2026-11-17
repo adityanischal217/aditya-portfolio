@@ -102,6 +102,21 @@ export default function Contact() {
                 </span>
               </a>
 
+               <a
+                href="mailto:adityanischal217@email.com"
+                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#8DDB72]/40 hover:bg-[#8DDB72]/[0.05]"
+              >
+                <div>
+                  <p className="text-xs text-zinc-500">Whatsapp Number</p>
+                  <p className="mt-1 text-sm font-medium text-zinc-200 transition group-hover:text-[#8DDB72]">
+                    7876721147
+                  </p>
+                </div>
+                <span className="text-xl text-zinc-500 transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#8DDB72]">
+                  ↗
+                </span>
+              </a>
+
             </div>
           </div>
 
@@ -121,7 +136,7 @@ export default function Contact() {
             </div>
 
             <form
-              action="https://formspree.io/f/YOUR_FORM_ID"
+              action="https://formspree.io/f/xppddrpg"
               method="POST"
               className="space-y-5"
             >

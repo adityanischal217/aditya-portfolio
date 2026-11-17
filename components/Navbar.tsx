@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ThemeToggle from "@/components/ThemeToggle";
 
-const links = ["home", "about", "projects", "experience", "contact"];
+const links = ["home", "about","experience", "projects",  "contact"];
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");

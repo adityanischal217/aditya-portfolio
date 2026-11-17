@@ -14,9 +14,9 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           className="text-xl font-bold text-zinc-300 md:text-2xl"
         >
-          Hello, I'm{" "}
-          <span className="rounded-md bg-[#A855F7] px-3 py-1 text-white shadow-[0_0_20px_rgba(168,85,247,0.5)]">
-            Aditya Nischal
+      
+          <span className="rounded-md bg-gradient-to-b from-[#8DDB72] to-[#4CAF50] px-3 py-1 text-black shadow-[0_0_20px_rgba(108,198,86,0.45)]">
+              Hello, I'm Aditya Nischal
           </span>
         </motion.p>
 
@@ -27,7 +27,7 @@ export default function Hero() {
           className="mt-4 text-5xl font-bold leading-tight md:text-8xl"
         >
           Crafting <br /> Digital <br />{" "}
-          <span className="text-[#A855F7] drop-shadow-[0_0_25px_rgba(168,85,247,0.45)]">
+          <span className="bg-gradient-to-b from-[#8DDB72] to-[#4CAF50] bg-clip-text text-transparent">
             Mobility.
           </span>
         </motion.h1>
@@ -39,14 +39,14 @@ export default function Hero() {
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <a
             href="#projects"
-            className="rounded-full bg-[#A855F7] px-6 py-3 font-medium text-white transition hover:shadow-[0_0_25px_rgba(168,85,247,0.6)]"
+            className="rounded-full bg-gradient-to-b from-[#8DDB72] to-[#4CAF50] px-6 py-3 font-medium text-black transition hover:shadow-[0_0_25px_rgba(108,198,86,0.55)]"
           >
             Explore Projects
           </a>
           <a
             href="https://www.linkedin.com/in/adityanischal/"
             target="_blank"
-            className="px-6 py-3 text-zinc-400 transition hover:text-[#A855F7]"
+            className="px-6 py-3 text-zinc-400 transition hover:text-[#6CC656]"
           >
             Linkedin ↗
           </a>
@@ -55,7 +55,9 @@ export default function Hero() {
         <div className="mt-16 flex justify-center gap-12">
           {stats.map((s) => (
             <div key={s.label}>
-              <p className="text-4xl font-bold text-[#A855F7]">{s.value}</p>
+              <p className="bg-gradient-to-b from-[#8DDB72] to-[#4CAF50] bg-clip-text text-4xl font-bold text-transparent">
+                {s.value}
+              </p>
               <p className="text-sm text-zinc-500">{s.label}</p>
             </div>
           ))}

@@ -1,4 +1,4 @@
-import { skills } from "@/data/skills";
+import { skillRows } from "@/data/skills";
 import TechStackMarquee from "@/components/TechStackMarquee";
 
 const stats = [
@@ -78,9 +78,6 @@ export default function About() {
           <p className="mb-4 bg-gradient-to-b from-[#8DDB72] to-[#4CAF50] bg-clip-text text-base font-extrabold uppercase tracking-widest text-transparent md:text-lg">
             Tech Stack
           </p>
-          <TechStackMarquee skills={skills} />
+          <TechStackMarquee rows={skillRows} />
         </div>
       </div>
-    </section>
-  );
-}

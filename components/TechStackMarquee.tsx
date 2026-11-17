@@ -1,46 +1,51 @@
 "use client";
 import { useEffect, useRef } from "react";
 
-const SPEED = 0.8; // pixels per frame, lower = slower
-const RESUME_DELAY = 1500; // ms to wait after manual scroll before auto-scroll resumes
+const RESUME_DELAY = 1500; // ms before auto-scroll resumes after interaction
+const REPEATS = 6; // how many times each row's skills are repeated
 
 function Row({
   items,
   reverse,
+  speed = 0.8,
   paused,
-  onInteractStart,
-  onInteractEnd,
-  registerRef,
+  onStart,
+  onEnd,
 }: {
   items: string[];
   reverse?: boolean;
+  speed?: number;
   paused: React.MutableRefObject<boolean>;
-  onInteractStart: () => void;
-  onInteractEnd: () => void;
-  registerRef: (el: HTMLDivElement | null) => void;
+  onStart: () => void;
+  onEnd: () => void;
 }) {
-  const loop = [...items, ...items];
   const ref = useRef<HTMLDivElement>(null);
+  const setRef = useRef<HTMLDivElement>(null);
   const pos = useRef(0);
+
+  // width of ONE set of skills (including trailing gap)
+  const getPeriod = () => setRef.current?.offsetWidth ?? 0;
+
+  // keep scrollLeft inside [period, 2*period) so there is always content on both sides
+  const normalize = (x: number, p: number) => {
+    if (p <= 0) return x;
+    while (x >= 2 * p) x -= p;
+    while (x < p) x += p;
+    return x;
+  };
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    registerRef(el);
     let raf: number;
 
-    // Row 2 starts at the midpoint so it can scroll backwards seamlessly
-    if (reverse) {
-      pos.current = el.scrollWidth / 2;
-      el.scrollLeft = pos.current;
-    }
+    pos.current = getPeriod();
+    el.scrollLeft = pos.current;
 
     const tick = () => {
-      if (!paused.current) {
-        const half = el.scrollWidth / 2;
-        pos.current += reverse ? -SPEED : SPEED;
-        if (pos.current >= half) pos.current -= half;
-        if (pos.current <= 0) pos.current += half;
+      const p = getPeriod();
+      if (!paused.current && p > 0) {
+        pos.current = normalize(pos.current + (reverse ? -speed : speed), p);
         el.scrollLeft = pos.current;
       }
       raf = requestAnimationFrame(tick);
@@ -49,96 +54,94 @@ function Row({
 
     return () => cancelAnimationFrame(raf);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [reverse, speed]);
 
-  // Keep position in sync (and loop seamlessly) when the user scrolls manually
-  const syncPos = () => {
+  // manual scroll: keep position in sync and loop seamlessly
+  const onScroll = () => {
     const el = ref.current;
     if (!el || !paused.current) return;
-    const half = el.scrollWidth / 2;
-    let x = el.scrollLeft;
-    if (x >= half) {
-      x -= half;
-      el.scrollLeft = x;
-    } else if (x <= 0) {
-      x += half;
-      el.scrollLeft = x;
-    }
+    const p = getPeriod();
+    const x = normalize(el.scrollLeft, p);
+    if (x !== el.scrollLeft) el.scrollLeft = x;
     pos.current = x;
   };
 
   return (
     <div
       ref={ref}
-      onMouseEnter={onInteractStart}
-      onMouseLeave={onInteractEnd}
-      onTouchStart={onInteractStart}
-      onTouchEnd={onInteractEnd}
+      onMouseEnter={onStart}
+      onMouseLeave={onEnd}
+      onTouchStart={onStart}
+      onTouchEnd={onEnd}
       onWheel={() => {
-        onInteractStart();
-        onInteractEnd();
+        onStart();
+        onEnd();
       }}
-      onScroll={syncPos}
+      onScroll={onScroll}
       className="overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
     >
-      <div className="flex w-max gap-4">
-        {loop.map((s, i) => (
-          <span
-            key={i}
-            className="whitespace-nowrap rounded-full border border-white/15 px-5 py-2"
+      <div className="flex w-max">
+        {Array.from({ length: REPEATS }).map((_, r) => (
+          <div
+            key={r}
+            ref={r === 0 ? setRef : undefined}
+            className="flex gap-4 pr-4"
           >
-            {s}
-          </span>
+            {items.map((s, i) => (
+              <span
+                key={i}
+                className="whitespace-nowrap rounded-full border border-white/15 px-5 py-2"
+              >
+                {s}
+              </span>
+            ))}
+          </div>
         ))}
       </div>
     </div>
   );
 }
 
-export default function TechStackMarquee({ skills }: { skills: string[] }) {
-  const mid = Math.ceil(skills.length / 2);
-  const rowOne = skills.slice(0, mid);
-  const rowTwo = skills.slice(mid);
+export default function TechStackMarquee({ rows }: { rows: string[][] }) {
+  const [rowOne, rowTwo] = rows;
 
   const paused = useRef(false);
-  const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     return () => {
-      if (resumeTimer.current) clearTimeout(resumeTimer.current);
+      if (timer.current) clearTimeout(timer.current);
     };
   }, []);
 
   const pause = () => {
     paused.current = true;
-    if (resumeTimer.current) clearTimeout(resumeTimer.current);
+    if (timer.current) clearTimeout(timer.current);
   };
 
   const resumeLater = () => {
-    if (resumeTimer.current) clearTimeout(resumeTimer.current);
-    resumeTimer.current = setTimeout(() => {
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = setTimeout(() => {
       paused.current = false;
     }, RESUME_DELAY);
   };
-
-  const noop = () => {};
 
   return (
     <div className="flex flex-col gap-4">
       <Row
         items={rowOne}
+        speed={0.8}
         paused={paused}
-        onInteractStart={pause}
-        onInteractEnd={resumeLater}
-        registerRef={noop}
+        onStart={pause}
+        onEnd={resumeLater}
       />
       <Row
         items={rowTwo}
         reverse
+        speed={1.0}
         paused={paused}
-        onInteractStart={pause}
-        onInteractEnd={resumeLater}
-        registerRef={noop}
+        onStart={pause}
+        onEnd={resumeLater}
       />
     </div>
   );

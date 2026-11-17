@@ -1,4 +1,4 @@
-export const skills = [
+const row1 = [
   // Programming Languages
   "Java",
   "Kotlin",
@@ -27,7 +27,9 @@ export const skills = [
   "Dagger",
   "Hilt",
   "Kotlin Coroutines",
+];
 
+const row2 = [
   // Testing
   "Espresso",
   "JUnit",
@@ -62,3 +64,8 @@ export const skills = [
   "PayU",
   "Razorpay",
 ];
+
+export const skillRows = [row1, row2];
+
+// still available if anything else imports the flat list
+export const skills = [...row1, ...row2];

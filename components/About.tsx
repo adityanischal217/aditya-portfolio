@@ -1,4 +1,5 @@
 import { skills } from "@/data/skills";
+import TechStackMarquee from "@/components/TechStackMarquee";
 
 const stats = [
   { value: "6.5+", label: "Years of Experience" },
@@ -8,14 +9,12 @@ const stats = [
 ];
 
 export default function About() {
-  const loop = [...skills, ...skills];
   return (
     <section id="about" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
-      
-    <p className="bg-gradient-to-b from-[#8DDB72] to-[#4CAF50] bg-clip-text text-base font-extrabold uppercase tracking-widest text-transparent md:text-lg">
-  About Me
-</p>
+        <p className="bg-gradient-to-b from-[#8DDB72] to-[#4CAF50] bg-clip-text text-base font-extrabold uppercase tracking-widest text-transparent md:text-lg">
+          About Me
+        </p>
         <h2 className="mt-3 max-w-4xl text-4xl font-bold tracking-tight text-zinc-100 md:text-6xl">
           Focused execution,
           <br />
@@ -35,9 +34,9 @@ export default function About() {
 
           <div className="space-y-4 text-zinc-400">
             <h3 className="text-2xl font-semibold text-white md:text-3xl">
-  I build Android apps that scale to millions of users.
-</h3>
-          
+              I build Android apps that scale to millions of users.
+            </h3>
+
             <p>
               I'm Aditya Nischal, an Android Developer with 6.5+ years of experience building
               fast, reliable and scalable apps using Kotlin, Java, Jetpack and MVVM.
@@ -75,21 +74,12 @@ export default function About() {
           </div>
         </div>
 
-        <div className="mt-20 overflow-hidden">
-  <p className="mb-4 bg-gradient-to-b from-[#8DDB72] to-[#4CAF50] bg-clip-text text-base font-extrabold uppercase tracking-widest text-transparent md:text-lg">
-    Tech Stack
-  </p>
-  <div className="flex w-max animate-marquee gap-4">
-    {loop.map((s, i) => (
-      <span
-        key={i}
-        className="whitespace-nowrap rounded-full border border-white/15 px-5 py-2"
-      >
-        {s}
-      </span>
-    ))}
-  </div>
-</div>
+        <div className="mt-20">
+          <p className="mb-4 bg-gradient-to-b from-[#8DDB72] to-[#4CAF50] bg-clip-text text-base font-extrabold uppercase tracking-widest text-transparent md:text-lg">
+            Tech Stack
+          </p>
+          <TechStackMarquee skills={skills} />
+        </div>
       </div>
     </section>
   );

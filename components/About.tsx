@@ -61,11 +61,11 @@ export default function About() {
         {/* Main profile layout */}
         <div className="grid items-center gap-14 md:grid-cols-[minmax(0,350px)_1fr] md:gap-20">
 
-          {/* Profile image - Mobile phone frame */}
+          {/* Profile image - Phone frame */}
           <div className="relative mx-auto w-full max-w-[300px] md:max-w-none">
 
             {/* Outer glow */}
-            <div className="absolute -inset-4 rounded-[3.5rem] bg-gradient-to-br from-[#8DDB72]/20 to-transparent opacity-60 blur-2xl transition duration-500 group-hover:opacity-100" />
+            <div className="pointer-events-none absolute -inset-4 rounded-[3.5rem] bg-gradient-to-br from-[#8DDB72]/20 to-transparent opacity-60 blur-2xl" />
 
             <div className="group relative rounded-[2.8rem] border border-white/15 bg-gradient-to-br from-zinc-800 to-zinc-950 p-3 shadow-2xl shadow-black/40 transition-all duration-500 hover:-translate-y-2 hover:border-[#8DDB72]/50 hover:shadow-[0_25px_70px_rgba(76,175,80,0.15)]">
 
@@ -154,33 +154,15 @@ export default function About() {
               </p>
             </div>
 
-            {/* Stats Bento */}
-            <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-3">
+            {/* Three Stats Cards */}
+            <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3">
 
-              {/* Experience card */}
-              <div className="group relative col-span-2 overflow-hidden rounded-3xl border border-[#8DDB72]/20 bg-gradient-to-br from-[#4CAF50]/15 to-white/[0.02] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#8DDB72]/50 hover:shadow-[0_15px_40px_rgba(76,175,80,0.08)] md:col-span-1">
-                <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-[#8DDB72]/10 blur-2xl transition-all duration-500 group-hover:scale-150" />
-
-                <p className="relative text-xs font-medium uppercase tracking-widest text-zinc-400">
-                  Experience
-                </p>
-
-                <p className={`relative mt-5 bg-gradient-to-r ${accent} bg-clip-text text-5xl font-extrabold text-transparent transition-transform duration-300 group-hover:scale-105 group-hover:origin-left`}>
-                  6.5+
-                </p>
-
-                <p className="relative mt-2 text-sm text-zinc-400">
-                  Years building Android
-                </p>
-              </div>
-
-              {/* Other stat cards */}
               {stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.025] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#8DDB72]/40 hover:bg-[#8DDB72]/[0.04] hover:shadow-[0_12px_35px_rgba(76,175,80,0.07)]"
+                  className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.025] p-5 transition-all duration-300 hover:-translate-y-2 hover:border-[#8DDB72]/40 hover:bg-[#8DDB72]/[0.04] hover:shadow-[0_12px_35px_rgba(76,175,80,0.07)]"
                 >
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between gap-2">
                     <span className="text-xs font-medium uppercase tracking-wider text-zinc-500">
                       {stat.label}
                     </span>
@@ -204,7 +186,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* Tech Stack */}
+        {/* Tech Stack - No background card */}
         <div className="mt-28">
 
           <div className="mb-8 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
@@ -223,9 +205,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] py-6 transition-colors duration-300 hover:border-[#8DDB72]/25">
-            <TechStackMarquee rows={skillRows} />
-          </div>
+          <TechStackMarquee rows={skillRows} />
 
         </div>
       </div>

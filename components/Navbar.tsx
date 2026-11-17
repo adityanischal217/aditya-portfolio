@@ -37,19 +37,22 @@ export default function Navbar() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="fixed inset-x-0 top-0 z-50 px-4 pt-0"
+      className="fixed inset-x-0 top-0 z-50 bg-transparent px-4 pt-0"
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between rounded-b-2xl border border-t-0 border-[var(--card-border)] bg-[var(--nav-bg)] px-4 py-3 shadow-[0_8px_40px_var(--shadow)] backdrop-blur-xl sm:px-5 md:px-6">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between rounded-b-2xl border border-t-0 border-[var(--card-border)] bg-[var(--nav-bg)] px-4 py-3 shadow-[0_8px_40px_var(--shadow)] backdrop-blur-xl transition-all duration-300 sm:px-5 md:px-6">
 
         {/* Logo */}
-        <a href="#home" className="group flex shrink-0 items-center gap-2">
+        <a
+          href="#home"
+          className="group flex shrink-0 items-center gap-2"
+        >
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#8DDB72] to-[#4CAF50] text-lg font-black text-black shadow-[0_0_20px_rgba(141,219,114,0.15)] transition-all duration-300 group-hover:rotate-6 group-hover:scale-110 group-hover:shadow-[0_0_25px_rgba(141,219,114,0.4)]">
             AN
           </div>
 
           <div className="hidden sm:block">
             <p className="text-sm font-bold tracking-wide text-[var(--text-primary)]">
-              Aditya<span className="text-[#8DDB72]">.</span>
+              Aditya<span className="text-[var(--accent)]">.</span>
             </p>
 
             <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--text-muted)]">
@@ -70,7 +73,7 @@ export default function Navbar() {
                   aria-current={isActive ? "location" : undefined}
                   className={`group relative block overflow-hidden rounded-full px-4 py-2 text-sm font-medium capitalize transition-all duration-300 ${
                     isActive
-                      ? "bg-[#8DDB72]/10 text-[var(--accent)]"
+                      ? "bg-[var(--glow)] text-[var(--accent)]"
                       : "text-[var(--text-secondary)] hover:bg-[var(--surface-hover)] hover:text-[var(--accent)]"
                   }`}
                 >
@@ -93,7 +96,7 @@ export default function Navbar() {
 
           <a
             href="#contact"
-            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#8DDB72] to-[#4CAF50] px-4 py-2.5 text-sm font-bold text-black transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(141,219,114,0.4)] sm:px-5"
+            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#8DDB72] to-[#4CAF50] px-4 py-2.5 text-sm font-bold text-black transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(141,219,114,0.4)] active:scale-95 sm:px-5"
           >
             Hire Me
 

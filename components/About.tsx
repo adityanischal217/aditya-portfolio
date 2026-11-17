@@ -29,7 +29,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative isolate overflow-hidden px-6 py-24 md:py-32"
+      className="relative isolate overflow-hidden bg-[var(--background)] px-6 py-24 transition-colors duration-300 md:py-32"
     >
       {/* Background glows */}
       <div
@@ -45,14 +45,14 @@ export default function About() {
 
         {/* Section heading */}
         <div className="mb-16">
-          <p className="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.25em] text-[#8DDB72]">
-            <span className="h-px w-8 bg-[#8DDB72]" />
+          <p className="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.25em] text-[var(--accent)]">
+            <span className="h-px w-8 bg-[var(--accent)]" />
             About me
           </p>
 
-          <h2 className="mt-5 max-w-5xl text-4xl font-extrabold leading-[1.15] tracking-tight text-white md:text-6xl">
+          <h2 className="mt-5 max-w-5xl text-4xl font-extrabold leading-[1.15] tracking-tight text-[var(--text-primary)] md:text-6xl">
             Engineering ideas into
-            <span className="bg-gradient-to-r from-[#8DDB72] to-[#4CAF50] bg-clip-text text-transparent">
+            <span className={`bg-gradient-to-r ${accent} bg-clip-text text-transparent`}>
               {" "}digital experiences.
             </span>
           </h2>
@@ -67,9 +67,9 @@ export default function About() {
             {/* Outer glow */}
             <div className="pointer-events-none absolute -inset-4 rounded-[3.5rem] bg-gradient-to-br from-[#8DDB72]/20 to-transparent opacity-60 blur-2xl" />
 
-            <div className="group relative rounded-[2.8rem] border border-white/15 bg-gradient-to-br from-zinc-800 to-zinc-950 p-3 shadow-2xl shadow-black/40 transition-all duration-500 hover:-translate-y-2 hover:border-[#8DDB72]/50 hover:shadow-[0_25px_70px_rgba(76,175,80,0.15)]">
+            <div className="group relative rounded-[2.8rem] border border-[var(--card-border)] bg-[var(--card)] p-3 shadow-2xl shadow-[var(--shadow)] transition-all duration-500 hover:-translate-y-2 hover:border-[var(--accent)]/50 hover:shadow-[0_25px_70px_var(--glow)]">
 
-              <div className="relative aspect-[9/16] overflow-hidden rounded-[2.2rem] bg-zinc-800">
+              <div className="relative aspect-[9/16] overflow-hidden rounded-[2.2rem] bg-[var(--surface)]">
 
                 <img
                   src="/aditya_pic.png"
@@ -104,11 +104,11 @@ export default function About() {
             </div>
 
             {/* Floating experience badge */}
-            <div className="absolute -right-5 top-24 rounded-2xl border border-[#8DDB72]/20 bg-zinc-950/90 p-4 shadow-xl backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-[#8DDB72]/60 md:-right-10">
+            <div className="absolute -right-5 top-24 rounded-2xl border border-[var(--accent)]/20 bg-[var(--card)]/95 p-4 shadow-xl backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-[var(--accent)]/60 md:-right-10">
               <p className={`bg-gradient-to-r ${accent} bg-clip-text text-2xl font-extrabold text-transparent`}>
                 6.5+
               </p>
-              <p className="mt-1 text-[10px] font-medium uppercase tracking-wider text-zinc-400">
+              <p className="mt-1 text-[10px] font-medium uppercase tracking-wider text-[var(--text-muted)]">
                 Years Experience
               </p>
             </div>
@@ -118,18 +118,18 @@ export default function About() {
           {/* Profile content */}
           <div>
 
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2">
-              <span className="text-[#8DDB72]">✦</span>
-              <span className="text-xs font-medium tracking-wide text-zinc-300">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--card-border)] bg-[var(--surface)] px-4 py-2">
+              <span className="text-[var(--accent)]">✦</span>
+              <span className="text-xs font-medium tracking-wide text-[var(--text-secondary)]">
                 Building mobile experiences that matter
               </span>
             </div>
 
-            <h3 className="text-3xl font-bold leading-tight text-white md:text-4xl">
+            <h3 className="text-3xl font-bold leading-tight text-[var(--text-primary)] md:text-4xl">
               I build Android applications that scale to millions of users.
             </h3>
 
-            <div className="mt-6 space-y-4 text-sm leading-7 text-zinc-400 md:text-base">
+            <div className="mt-6 space-y-4 text-sm leading-7 text-[var(--text-secondary)] md:text-base">
               <p>
                 I'm an Android Developer with 6.5+ years of experience
                 building fast, reliable applications using Kotlin,
@@ -160,23 +160,23 @@ export default function About() {
               {stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.025] p-5 transition-all duration-300 hover:-translate-y-2 hover:border-[#8DDB72]/40 hover:bg-[#8DDB72]/[0.04] hover:shadow-[0_12px_35px_rgba(76,175,80,0.07)]"
+                  className="group relative overflow-hidden rounded-3xl border border-[var(--card-border)] bg-[var(--card)] p-5 shadow-[0_8px_25px_var(--shadow)] transition-all duration-300 hover:-translate-y-2 hover:border-[var(--accent)]/40 hover:bg-[var(--card-hover)] hover:shadow-[0_12px_35px_var(--glow)]"
                 >
                   <div className="flex items-center justify-between gap-2">
-                    <span className="text-xs font-medium uppercase tracking-wider text-zinc-500">
+                    <span className="text-xs font-medium uppercase tracking-wider text-[var(--text-muted)]">
                       {stat.label}
                     </span>
 
-                    <span className="text-lg text-zinc-500 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-[#8DDB72]">
+                    <span className="text-lg text-[var(--text-muted)] transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-[var(--accent)]">
                       {stat.icon}
                     </span>
                   </div>
 
-                  <p className="mt-5 text-2xl font-extrabold text-white transition-colors duration-300 group-hover:text-[#8DDB72]">
+                  <p className="mt-5 text-2xl font-extrabold text-[var(--text-primary)] transition-colors duration-300 group-hover:text-[var(--accent)]">
                     {stat.value}
                   </p>
 
-                  <p className="mt-2 text-xs leading-5 text-zinc-500">
+                  <p className="mt-2 text-xs leading-5 text-[var(--text-muted)]">
                     {stat.detail}
                   </p>
                 </div>
@@ -191,12 +191,11 @@ export default function About() {
 
           <div className="mb-8 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
             <div>
-              <p className="text-sm font-bold uppercase tracking-[0.25em] text-[#8DDB72]">
-                Teck Stack
+              <p className="text-sm font-bold uppercase tracking-[0.25em] text-[var(--accent)]">
+                Tech Stack
               </p>
             </div>
-
-         </div>
+          </div>
 
           <TechStackMarquee rows={skillRows} />
 

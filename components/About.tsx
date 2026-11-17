@@ -13,7 +13,7 @@ export default function About() {
     <section id="about" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
       
-       <p className="bg-gradient-to-b from-[#8DDB72] to-[#4CAF50] bg-clip-text text-sm uppercase tracking-widest text-transparent">
+    <p className="bg-gradient-to-b from-[#8DDB72] to-[#4CAF50] bg-clip-text text-base font-extrabold uppercase tracking-widest text-transparent md:text-lg">
   About Me
 </p>
         <h2 className="mt-3 max-w-4xl text-4xl font-bold tracking-tight text-zinc-100 md:text-6xl">

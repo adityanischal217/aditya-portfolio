@@ -6,9 +6,9 @@ export default function About() {
     <section id="about" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <p className="text-sm uppercase tracking-widest text-zinc-500">About Me</p>
-        <h2 className="mt-3 max-w-3xl text-lg font-semibold text-zinc-200 md:text-3xl">
-          6.5+ Years Experience | 5M+ Downloads 
-        </h2>
+        <h2 className="mt-3 max-w-4xl text-3xl font-bold tracking-tight text-zinc-100 md:text-5xl">
+  6.5+ Years Experience | 5M+ Downloads
+</h2>
 
         <div className="mt-12 grid gap-10 md:grid-cols-2">
           <div className="aspect-square rounded-2xl bg-zinc-800">

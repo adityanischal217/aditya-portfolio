@@ -1,8 +1,7 @@
 
 import { experience } from "@/data/experience";
 
-const accent =
-  "bg-gradient-to-r from-[#8DDB72] to-[#4CAF50]";
+const accent = "bg-gradient-to-r from-[#8DDB72] to-[#4CAF50]";
 
 export default function Experience() {
   return (
@@ -58,7 +57,7 @@ export default function Experience() {
                 className="group relative pl-10 md:pl-16"
               >
                 {/* Timeline indicator */}
-                <div className="absolute left-0 top-7 z-10 flex h-[15px] w-[15px] items-center justify-center rounded-full border border-[#8DDB72]/50 bg-zinc-950 md:left-[8px] md:h-[15px] md:w-[15px]">
+                <div className="absolute left-0 top-7 z-10 flex h-[15px] w-[15px] items-center justify-center rounded-full border border-[#8DDB72]/50 bg-zinc-950 transition-all duration-300 group-hover:scale-125 group-hover:border-[#8DDB72] md:left-[8px] md:h-[15px] md:w-[15px]">
                   <span
                     className={`h-2 w-2 rounded-full ${accent} ${
                       index === 0 ? "shadow-[0_0_12px_#8DDB72]" : ""
@@ -67,7 +66,7 @@ export default function Experience() {
                 </div>
 
                 {/* Experience Card */}
-                <div className="relative rounded-3xl border border-white/10 bg-white/[0.025] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#8DDB72]/40 hover:bg-white/[0.045] md:p-8">
+                <div className="relative rounded-3xl border border-white/10 bg-white/[0.025] p-6 transition-all duration-500 ease-out hover:z-20 hover:-translate-y-2 hover:scale-[1.03] hover:border-[#8DDB72]/50 hover:bg-white/[0.06] hover:shadow-[0_15px_50px_rgba(76,175,80,0.12)] md:p-8">
 
                   {/* Card top */}
                   <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
@@ -77,7 +76,7 @@ export default function Experience() {
                         {e.period}
                       </p>
 
-                      <h3 className="mt-3 text-xl font-bold text-white md:text-2xl">
+                      <h3 className="mt-3 text-xl font-bold text-white transition-colors duration-300 group-hover:text-[#8DDB72] md:text-2xl">
                         {e.role}
                       </h3>
 
@@ -87,29 +86,29 @@ export default function Experience() {
                     </div>
 
                     {/* Experience number */}
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-sm font-bold text-zinc-500 transition-colors group-hover:border-[#8DDB72]/30 group-hover:text-[#8DDB72]">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-sm font-bold text-zinc-500 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:border-[#8DDB72]/40 group-hover:bg-[#8DDB72]/10 group-hover:text-[#8DDB72]">
                       {String(experience.length - index).padStart(2, "0")}
                     </div>
                   </div>
 
                   {/* Divider */}
-                  <div className="my-6 h-px bg-white/[0.08]" />
+                  <div className="my-6 h-px bg-white/[0.08] transition-colors duration-300 group-hover:bg-[#8DDB72]/20" />
 
                   {/* Responsibilities */}
                   <ul className="grid gap-3 sm:grid-cols-2">
                     {e.points.map((pt) => (
                       <li
                         key={pt}
-                        className="flex items-start gap-3 text-sm leading-6 text-zinc-400"
+                        className="flex items-start gap-3 text-sm leading-6 text-zinc-400 transition-colors duration-300 hover:text-zinc-200"
                       >
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#8DDB72]" />
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#8DDB72] transition-all duration-300 group-hover:shadow-[0_0_8px_#8DDB72]" />
                         <span>{pt}</span>
                       </li>
                     ))}
                   </ul>
 
                   {/* Bottom accent */}
-                  <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#8DDB72]/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#8DDB72]/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 </div>
               </div>
             ))}

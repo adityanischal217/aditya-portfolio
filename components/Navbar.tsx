@@ -52,11 +52,14 @@ export default function Navbar() {
 
           <div className="hidden sm:block">
             <p className="text-sm font-bold tracking-wide text-[var(--text-primary)]">
-              Aditya<span className="text-[var(--accent)]">.</span>
+              Aditya Nischal<span className="text-[var(--accent)]">.</span>
             </p>
 
             <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--text-muted)]">
               Android Developer
+            </p>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--text-muted)]">
+              Join Ventures Solutions Pvt Ltd
             </p>
           </div>
         </a>

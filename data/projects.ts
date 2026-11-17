@@ -1,9 +1,10 @@
+
 export type Project = {
   title: string;
-  /*category: "Personal" | "Company";*/
   category: "Company";
   description: string;
   tags: string[];
+  screenshots?: string[];
   links: { label: string; url: string }[];
 };
 
@@ -25,6 +26,11 @@ export const projects: Project[] = [
       "Netcore",
       "ARCore",
       "Payment Integration",
+    ],
+    screenshots: [
+      "/projects/igp-1.png",
+      "/projects/igp-2.png",
+      "/projects/igp-3.png",
     ],
     links: [
       {
@@ -48,6 +54,10 @@ export const projects: Project[] = [
       "Firebase",
       "Analytics",
     ],
+    screenshots: [
+      "/projects/interflora-1.png",
+      "/projects/interflora-2.png",
+    ],
     links: [
       {
         label: "Google Play Store",
@@ -68,10 +78,10 @@ export const projects: Project[] = [
       "Retrofit",
       "Glide",
       "Razorpay",
-     ],
-      screenshots: [
-      "/aditya_pic.png",
-      "/aditya_pic.png",
+    ],
+     screenshots: [
+      "/projects/local3.png",
+      "/projects/local4.png",
     ],
     links: [
       {
@@ -92,7 +102,12 @@ export const projects: Project[] = [
       "Retrofit",
       "Glide",
       "Razorpay",
-      ],
+    ],
+    screenshots: [
+      "/projects/local1.png",
+      "/projects/local2.png",
+    
+    ],
     links: [
       {
         label: "Google Play Store",

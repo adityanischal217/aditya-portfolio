@@ -15,7 +15,7 @@ export default function Hero() {
           className="text-xl font-bold text-zinc-300 md:text-2xl"
         >
           Hello, I'm{" "}
-          <span className="rounded-lg bg-gradient-to-r from-indigo-500/20 to-cyan-400/20 px-3 py-1 text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-300">
+          <span className="rounded-md bg-[#A855F7] px-3 py-1 text-white shadow-[0_0_20px_rgba(168,85,247,0.5)]">
             Aditya Nischal
           </span>
         </motion.p>
@@ -26,7 +26,10 @@ export default function Hero() {
           transition={{ duration: 0.7 }}
           className="mt-4 text-5xl font-bold leading-tight md:text-8xl"
         >
-          Crafting <br /> Digital <br /> Mobility.
+          Crafting <br /> Digital <br />{" "}
+          <span className="text-[#A855F7] drop-shadow-[0_0_25px_rgba(168,85,247,0.45)]">
+            Mobility.
+          </span>
         </motion.h1>
 
         <p className="mx-auto mt-6 max-w-xl text-lg text-zinc-400">
@@ -34,10 +37,17 @@ export default function Hero() {
         </p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <a href="#projects" className="rounded-full bg-white px-6 py-3 font-medium text-black">
+          <a
+            href="#projects"
+            className="rounded-full bg-[#A855F7] px-6 py-3 font-medium text-white transition hover:shadow-[0_0_25px_rgba(168,85,247,0.6)]"
+          >
             Explore Projects
           </a>
-          <a href="https://www.linkedin.com/in/adityanischal/" target="_blank" className="px-6 py-3 text-zinc-400 hover:text-white">
+          <a
+            href="https://www.linkedin.com/in/adityanischal/"
+            target="_blank"
+            className="px-6 py-3 text-zinc-400 transition hover:text-[#A855F7]"
+          >
             Linkedin ↗
           </a>
         </div>
@@ -45,7 +55,7 @@ export default function Hero() {
         <div className="mt-16 flex justify-center gap-12">
           {stats.map((s) => (
             <div key={s.label}>
-              <p className="text-4xl font-bold">{s.value}</p>
+              <p className="text-4xl font-bold text-[#A855F7]">{s.value}</p>
               <p className="text-sm text-zinc-500">{s.label}</p>
             </div>
           ))}

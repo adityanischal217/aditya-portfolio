@@ -76,18 +76,20 @@ export default function About() {
         </div>
 
         <div className="mt-20 overflow-hidden">
-          <p className="mb-4 text-sm text-zinc-500">Tech Stack</p>
-          <div className="flex w-max animate-marquee gap-4">
-            {loop.map((s, i) => (
-              <span
-                key={i}
-                className="whitespace-nowrap rounded-full border border-white/15 px-5 py-2"
-              >
-                {s}
-              </span>
-            ))}
-          </div>
-        </div>
+  <p className="mb-4 bg-gradient-to-b from-[#8DDB72] to-[#4CAF50] bg-clip-text text-base font-extrabold uppercase tracking-widest text-transparent md:text-lg">
+    Tech Stack
+  </p>
+  <div className="flex w-max animate-marquee gap-4">
+    {loop.map((s, i) => (
+      <span
+        key={i}
+        className="whitespace-nowrap rounded-full border border-white/15 px-5 py-2"
+      >
+        {s}
+      </span>
+    ))}
+  </div>
+</div>
       </div>
     </section>
   );

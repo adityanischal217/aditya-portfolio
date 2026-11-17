@@ -2,6 +2,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type {
+  FormEvent,
+  ChangeEvent,
+  PageTransitionEvent,
+} from "react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -10,13 +15,13 @@ export default function Contact() {
     message: "",
   });
 
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState<"success" | "error" | "">("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const input =
     "w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-4 text-sm text-white placeholder:text-zinc-500 outline-none transition-all duration-300 hover:border-[#8DDB72]/30 hover:bg-white/[0.06] focus:border-[#8DDB72] focus:bg-white/[0.07] focus:ring-2 focus:ring-[#8DDB72]/10";
 
-  // Scroll to Home when returning to the portfolio using browser Back
+  // Scroll to Home when returning to the portfolio
   useEffect(() => {
     const scrollToHome = () => {
       window.scrollTo({
@@ -29,7 +34,7 @@ export default function Contact() {
       scrollToHome();
     };
 
-    const handlePageShow = (event) => {
+    const handlePageShow = (event: PageTransitionEvent) => {
       if (event.persisted) {
         scrollToHome();
       }
@@ -45,7 +50,9 @@ export default function Contact() {
   }, []);
 
   // Handle form input changes
-  const handleChange = (e) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
 
     setFormData((prev) => ({
@@ -54,17 +61,21 @@ export default function Contact() {
     }));
   };
 
-  // Submit form using Formspree without redirecting
-  const handleSubmit = async (e) => {
+  // Submit form through Formspree without redirecting
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (isSubmitting) return;
 
     setIsSubmitting(true);
     setStatus("");
 
     try {
+      const formElement = e.currentTarget;
+
       const response = await fetch("https://formspree.io/f/xppddrpg", {
         method: "POST",
-        body: new FormData(e.target),
+        body: new FormData(formElement),
         headers: {
           Accept: "application/json",
         },
@@ -73,15 +84,14 @@ export default function Contact() {
       const result = await response.json();
 
       if (response.ok && result.ok !== false) {
-        // Clear all form fields after successful submission
+        // Clear form after successful submission
         setFormData({
           name: "",
           email: "",
           message: "",
         });
 
-        e.target.reset();
-
+        formElement.reset();
         setStatus("success");
       } else {
         setStatus("error");
@@ -101,12 +111,12 @@ export default function Contact() {
     >
       {/* Background glow */}
       <div
-        aria-hidden
+        aria-hidden="true"
         className="pointer-events-none absolute -left-40 top-20 h-96 w-96 rounded-full bg-[#4CAF50]/10 blur-[120px]"
       />
 
       <div
-        aria-hidden
+        aria-hidden="true"
         className="pointer-events-none absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-[#8DDB72]/10 blur-[120px]"
       />
 
@@ -125,8 +135,8 @@ export default function Contact() {
           </h2>
 
           <p className="mt-6 max-w-xl text-base leading-7 text-zinc-400 md:text-lg">
-            Whether it's an Android application, a new opportunity,
-            or an interesting collaboration, I'd love to hear from you.
+            Whether it&apos;s an Android application, a new opportunity,
+            or an interesting collaboration, I&apos;d love to hear from you.
           </p>
         </div>
 
@@ -150,7 +160,7 @@ export default function Contact() {
               </div>
 
               <h3 className="mt-10 text-3xl font-bold text-white">
-                Let's connect and create something meaningful.
+                Let&apos;s connect and create something meaningful.
               </h3>
 
               <p className="mt-4 leading-7 text-zinc-400">
@@ -163,6 +173,7 @@ export default function Contact() {
             {/* Contact Details */}
             <div className="mt-14 space-y-5">
 
+              {/* Email */}
               <a
                 href="mailto:adityanischal217@email.com"
                 className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#8DDB72]/40 hover:bg-[#8DDB72]/[0.05]"
@@ -179,10 +190,11 @@ export default function Contact() {
                 </span>
               </a>
 
+              {/* LinkedIn */}
               <a
                 href="https://www.linkedin.com/in/adityanischal/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#8DDB72]/40 hover:bg-[#8DDB72]/[0.05]"
               >
                 <div>
@@ -197,10 +209,11 @@ export default function Contact() {
                 </span>
               </a>
 
+              {/* WhatsApp */}
               <a
                 href="https://wa.me/917876721147"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#8DDB72]/40 hover:bg-[#8DDB72]/[0.05]"
               >
                 <div>
@@ -227,25 +240,27 @@ export default function Contact() {
               </p>
 
               <h3 className="mt-2 text-2xl font-bold text-white">
-                Let's talk about your idea.
+                Let&apos;s talk about your idea.
               </h3>
 
               <p className="mt-2 text-sm text-zinc-500">
-                Fill out the form and I'll get back to you.
+                Fill out the form and I&apos;ll get back to you.
               </p>
             </div>
 
-            <form
-              onSubmit={handleSubmit}
-              className="space-y-5"
-            >
+            <form onSubmit={handleSubmit} className="space-y-5">
+
               {/* Name */}
               <div>
-                <label className="mb-2 block text-sm font-medium text-zinc-300">
+                <label
+                  htmlFor="contact-name"
+                  className="mb-2 block text-sm font-medium text-zinc-300"
+                >
                   Your name
                 </label>
 
                 <input
+                  id="contact-name"
                   name="name"
                   type="text"
                   required
@@ -258,11 +273,15 @@ export default function Contact() {
 
               {/* Email */}
               <div>
-                <label className="mb-2 block text-sm font-medium text-zinc-300">
+                <label
+                  htmlFor="contact-email"
+                  className="mb-2 block text-sm font-medium text-zinc-300"
+                >
                   Email address
                 </label>
 
                 <input
+                  id="contact-email"
                   name="email"
                   type="email"
                   required
@@ -275,11 +294,15 @@ export default function Contact() {
 
               {/* Message */}
               <div>
-                <label className="mb-2 block text-sm font-medium text-zinc-300">
+                <label
+                  htmlFor="contact-message"
+                  className="mb-2 block text-sm font-medium text-zinc-300"
+                >
                   Your message
                 </label>
 
                 <textarea
+                  id="contact-message"
                   name="message"
                   required
                   rows={5}
@@ -307,7 +330,8 @@ export default function Contact() {
                   role="alert"
                   className="rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-400"
                 >
-                  Something went wrong. Please try again or contact me directly by email.
+                  Something went wrong. Please try again or contact me
+                  directly by email.
                 </div>
               )}
 
@@ -329,6 +353,7 @@ export default function Contact() {
               <p className="text-center text-xs text-zinc-600">
                 Your message will be sent securely through Formspree.
               </p>
+
             </form>
           </div>
         </div>
@@ -340,7 +365,7 @@ export default function Contact() {
           </p>
 
           <p className="text-sm text-zinc-500">
-            Designed & developed with
+            Designed &amp; developed with
             <span className="ml-1 text-[#8DDB72]">♥</span>
           </p>
         </div>

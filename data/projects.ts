@@ -69,6 +69,10 @@ export const projects: Project[] = [
       "Glide",
       "Razorpay",
      ],
+      screenshots: [
+      "/aditya_pic.png",
+      "/projects/aditya_pic.png",
+    ],
     links: [
       {
         label: "Google Play Store",

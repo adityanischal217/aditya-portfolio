@@ -6,16 +6,16 @@ const accent = "from-[#8DDB72] to-[#4CAF50]";
 
 const stats = [
   {
-    value: "4",
-    label: "Published Apps",
-    detail: "Live on Google Play",
-    icon: "↗",
-  },
-  {
     value: "B.Tech",
     label: "Computer Science",
     detail: "Engineering Graduate",
     icon: "⌘",
+  },
+  {
+    value: "4",
+    label: "Published Apps",
+    detail: "Live on Google Play",
+    icon: "↗",
   },
   {
     value: "5M+",
@@ -146,7 +146,7 @@ export default function About() {
               </p>
 
               <p>
-                Currently, I'm working as a Frontend Engineer
+                Currently, I'm working as a Frontend Engineer 2
                 (Android) at Join Ventures Solutions Pvt Ltd.,
                 collaborating with product, design and backend teams
                 while exploring modern Android development with
@@ -192,18 +192,11 @@ export default function About() {
           <div className="mb-8 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
             <div>
               <p className="text-sm font-bold uppercase tracking-[0.25em] text-[#8DDB72]">
-                My toolkit
+                Teck Stack
               </p>
-
-              <h3 className="mt-3 text-3xl font-bold text-white md:text-4xl">
-                Technologies I work with.
-              </h3>
             </div>
 
-            <p className="text-sm text-zinc-500">
-              Always learning. Always evolving.
-            </p>
-          </div>
+         </div>
 
           <TechStackMarquee rows={skillRows} />
 
